@@ -2,30 +2,34 @@
   <div class="template-list-component">
     <a-row :gutter="16">
       <a-col :span="6" v-for="item in list" :key="item.id" class="poster-item">
-        <a-card hoverable>
-          <template v-slot:cover>
-            <img :src="item.coverImg"  v-if="item.coverImg" />
-            <img src="http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png"  v-else />
-            <div class="hover-item">
-              <a-button size="large" type="primary">使用该模版创建</a-button>
-            </div>
-          </template>
-          <a-card-meta :title="item.title">
-            <template v-slot:description>
-              <div class="description-detail">
-                <span>作者：Test</span>
-                <span class="user-number">0</span>
+       <router-link :to="{ name: 'template', params: { id: item.id }}">
+          <a-card hoverable>
+            <template v-slot:cover>
+              <img :src="item.coverImg"  v-if="item.coverImg" />
+              <img src="http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png"  v-else />
+              <div class="hover-item">
+                <a-button size="large" type="primary">使用该模版创建</a-button>
               </div>
             </template>
-          </a-card-meta>
-        </a-card>
+            <a-card-meta :title="item.title">
+              <template v-slot:description>
+                <div class="description-detail">
+                  <span>作者：Test</span>
+                  <span class="user-number">0</span>
+                </div>
+              </template>
+            </a-card-meta>
+          </a-card>
+        </router-link>
       </a-col>
+      
     </a-row>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useRoute } from 'vue-router';
 export default defineComponent({
   name: 'template-list',
   props: {
@@ -36,6 +40,12 @@ export default defineComponent({
     type: {
       type: String,
       default: 'work'
+    }
+  },
+  setup() {
+    const route = useRoute();
+    return {
+      route
     }
   }
 })
