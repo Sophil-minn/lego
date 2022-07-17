@@ -1,23 +1,28 @@
 <template>
-  <div>
-    <h1>乐高标准模版</h1>
-    <ul>
-      <li>开箱即用</li>
-      <li>typescript</li>
-      <li>Vue3</li>
-      <li>支持 tsx</li>
-      <li>eslint</li>
-      <li>简单易用可扩展</li>
-    </ul>
+  <div class="homepage-container">
+    <a-layout :style="{background: '#fff'}">
+      <a-layout-header class="header">
+        <div class="page-title">
+          慕课乐高
+        </div>
+      </a-layout-header>
+      <a-layout-content class="home-layout">
+        <router-view></router-view>
+      </a-layout-content>
+    </a-layout>
+    <a-layout-footer>
+      © 慕课网（imooc.com）版权所有 | 津ICP备20000929号-2
+    </a-layout-footer>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TemplateDetail from './views/TemplateDetail.vue'
 
-let a = "d";
+
 export default defineComponent({
-  name: "App",
+  name: "App"
 });
 </script>
 
@@ -28,6 +33,5 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
