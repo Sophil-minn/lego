@@ -30,7 +30,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { useRoute } from 'vue-router';
-import { TemplateProps } from '../store';
+import { TemplateProps } from '../store/templates'
 export default defineComponent({
   name: 'template-list',
   props: {
