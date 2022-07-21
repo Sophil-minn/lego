@@ -4,7 +4,7 @@
   </component>
 </template>
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent } from 'vue'
 import { pick } from 'lodash-es'
 import useComponentCommon from '../hooks/useComponentCommon'
 // array that contains style props
