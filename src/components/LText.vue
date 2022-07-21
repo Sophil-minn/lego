@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" :style="styleProps" class="l-text-component">
-    {{text}}
+    {{fontSize}}
   </component>
 </template>
 <script lang="ts">

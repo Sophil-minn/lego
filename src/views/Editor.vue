@@ -10,12 +10,9 @@
       <a-layout-content class="preview-container">
         <p>画布区域</p>
         <div class="preview-list" id="canvas-area">
-         <component 
-            v-for="component in components"
-            :key="component.id"
-            :is="component.name"
-            v-bind="component.props"
-          />
+          <div v-for="component in components" :key="component.id">
+            <l-text>{{component.props.text}}</l-text>
+          </div>
         </div>
       </a-layout-content>
     </a-layout>
