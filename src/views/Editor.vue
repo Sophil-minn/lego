@@ -28,9 +28,13 @@
     </a-layout>
     <a-layout-sider width="300" style="background: purple" class="settings-panel">
       组件属性
-       <pre>
-        {{currentElement && currentElement.props}}
-      </pre>
+       <props-table 
+        v-if="currentElement && currentElement.props"
+          :props="currentElement.props"
+        ></props-table>
+        <pre>
+          {{currentElement && currentElement.props}}
+        </pre>
     </a-layout-sider>  
   </a-layout>
 </div>
@@ -43,6 +47,7 @@ import { GlobalDataProps } from '../store/index'
 import LText from '../components/LText.vue'
 import ComponentsList from '../components/ComponentsList.vue'
 import EditWrapper from '../components/EditWrapper.vue'
+import PropsTable from '../components/PropsTable.vue'
 import { ComponentData } from '../store/editor'
 import { defaultTextTemplates } from '../defaultTemplates'
 
@@ -50,7 +55,8 @@ export default defineComponent({
   components: {
     LText,
     ComponentsList,
-    EditWrapper
+    EditWrapper,
+    PropsTable
   },
   setup() {
     const store = useStore<GlobalDataProps>()
