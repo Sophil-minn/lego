@@ -5,7 +5,7 @@
       :key="key"
       class="prop-item"
     >
-     <span class="label" v-if="value.text">{{value.text}}</span>
+      <span class="label" v-if="value.text">{{value.text}}</span>
       <div class="prop-component">
         <component
           :is="value.component" 
@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType, VNode } from 'vue'
 import { reduce } from 'lodash'
 import { PropsToForms, mapPropsToForms } from '../propsMap'
 import { TextComponentProps } from '../defaultProps' 
@@ -39,7 +39,7 @@ interface FormProps {
   value: string;
   extraProps?: { [key: string]: any };
   text?: string;
-  options?: { text: string; value: any }[];
+  options?: { text: string | VNode; value: any }[];
   valueProp: string;
   eventName: string;
   events: { [key: string]: (e: any) => void };
@@ -59,7 +59,7 @@ export default defineComponent({
         const newKey = key as keyof TextComponentProps
         const item = mapPropsToForms[newKey]
         if (item) {
-          const { valueProp = 'value', eventName = 'change', initalTransform, afterTransform} = item
+          const { valueProp = 'value', eventName = 'change', initalTransform, afterTransform } = item
           const newItem: FormProps = {
             ...item,
             value: initalTransform ? initalTransform(value) : value,
@@ -80,6 +80,7 @@ export default defineComponent({
   }
 })
 </script>
+
 <style>
 .prop-item {
   display: flex;
